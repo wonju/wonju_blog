@@ -9,4 +9,4 @@
 
 1. 일단 'Django'를 설치하세요
 
-$ pip install django
+$ pip install -r requirement.txt
