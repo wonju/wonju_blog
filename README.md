@@ -1,12 +1,9 @@
-#  패스트 블로그
-패스트캠퍼스 웹 프로그래밍 school  2기 첫번째 백엔드 프로젝트
+#  블로그 연습
 
 ## 목표
-- 다음주 안에 블로그를 정확하게 개발하자
+ 블로그 만들기 연습하기
 
 
-##  설치할 패키지
+##  설치할 패키지(chomd +x python_packages.sh)
 
-1. 일단 'Django'를 설치하세요
-
-$ pip install -r requirement.txt
+./python_packages.sh
