@@ -6,4 +6,4 @@
 
 ##  설치할 패키지(chomd +x python_packages.sh)
 
-./python_packages.sh
+$ pip install -r requirement.txt
