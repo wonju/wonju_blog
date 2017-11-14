@@ -3,14 +3,17 @@ import requests
 
 from django.http.response import HttpResponse
 from django.conf import settings
-
-from wpsblog.renderer import render
+from django.template import loader
 
 
 def home(request):
-
-    context = {}
-    return render("home", context)
+    template = loader.get_template("home.html")
+    return HttpResponse(
+        template.render(
+            {"site_name" : "wonju blog"},
+            request,
+        )
+    )
 
 
 def room(request, room_id):
@@ -41,10 +44,12 @@ def news(request):
         in news_list
     ])
 
-    context = {
-        "count" : str(len(news_list)),
-        "news_content" : news_content,
-    }
+    template = loader.get_template("news.html")
 
-    return render("news", context)
+    return HttpResponse(
+        template.render(
+            {"news_content" : news_content},
+            request,
+        )
+    )
 
