@@ -38,17 +38,13 @@ def news(request):
             news_list,)
         )
 
-    news_content = "".join([
-        "<h3>{title}</h3><img src={img} /><p>{content}</p>".format(title=news["title"],img=news["image"],content=news["content"])
-        for news
-        in news_list
-    ])
-
     template = loader.get_template("news.html")
 
     return HttpResponse(
         template.render(
-            {"news_content" : news_content},
+            {
+                "news_list" : news_list
+            },
             request,
         )
     )
