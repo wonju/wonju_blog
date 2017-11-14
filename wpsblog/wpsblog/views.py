@@ -2,17 +2,14 @@ import json
 import requests
 
 from django.http.response import HttpResponse
-from django.conf import settings
-from django.template import loader
+from django.shortcuts import render
 
 
 def home(request):
-    template = loader.get_template("home.html")
-    return HttpResponse(
-        template.render(
-            {"site_name" : "wonju blog"},
-            request,
-        )
+    return render(
+        request,
+        "home.html",
+        {"site_name" : "wonju blog"}
     )
 
 
@@ -38,14 +35,11 @@ def news(request):
             news_list,)
         )
 
-    template = loader.get_template("news.html")
-
-    return HttpResponse(
-        template.render(
-            {
-                "news_list" : news_list
-            },
-            request,
-        )
+    return render(
+        request,
+        "news.html",
+        {
+            "news_list" : news_list
+        }
     )
 
