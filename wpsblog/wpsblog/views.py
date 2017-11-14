@@ -8,9 +8,9 @@ from wpsblog.renderer import render
 
 
 def home(request):
-    with open(settings.BASE_DIR + "/wpsblog/templates/home.html", "r") as template:
-        content = template.read()
-    return HttpResponse(content)
+
+    context = {}
+    return render("home", context)
 
 
 def room(request, room_id):
