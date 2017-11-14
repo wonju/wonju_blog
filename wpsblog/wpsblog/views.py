@@ -2,10 +2,15 @@ import json
 import requests
 
 from django.http.response import HttpResponse
+from django.conf import settings
+
+from wpsblog.renderer import render
 
 
 def home(request):
-    return HttpResponse("hello world")
+    with open(settings.BASE_DIR + "/wpsblog/templates/home.html", "r") as template:
+        content = template.read()
+    return HttpResponse(content)
 
 
 def room(request, room_id):
@@ -30,16 +35,16 @@ def news(request):
             news_list,)
         )
 
-    content = "<h1>News</h1>" +\
-        "<h2>This is news page.</h2>" +\
-        "<p>{count}개의 영화 정보가 있습니다.</p>".format(count=len(news_list))+\
-        "".join([
-            "<h3>{title}</h3><img src={img} /><p>{content}</p>".format(title=news["title"],img=news["image"],content=news["content"])
-            for news
-            in news_list
-        ])
+    news_content = "".join([
+        "<h3>{title}</h3><img src={img} /><p>{content}</p>".format(title=news["title"],img=news["image"],content=news["content"])
+        for news
+        in news_list
+    ])
 
-    return HttpResponse(
-        content
-    )
+    context = {
+        "count" : str(len(news_list)),
+        "news_content" : news_content,
+    }
+
+    return render("news", context)
 
