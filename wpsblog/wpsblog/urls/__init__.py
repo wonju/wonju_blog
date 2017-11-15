@@ -12,9 +12,5 @@ urlpatterns = [
     url(r'^news/$', news, name="news"),
     url(r'^about/us/$', about, name="about"),
 
-    url(r'^policy/', include([
-        url(r'^terms/$', terms, name="terms"),
-        url(r'^privacy/$', privacy, name="privacy"),
-        url(r'^disclaimer/$', disclaimer, name="disclaimer"),
-    ], namespace="policy"))
+    url(r'^policy/', include("wpsblog.urls.policy", namespace="policy"))
 ]
