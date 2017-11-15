@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 def news(request):
-    search = request.GET.get("search");
+    search = request.GET.get("search")
     url = "https://watcha.net/home/news.json?page=1&per=50"
     response = requests.get(url)
     news_dict = response.json()
@@ -20,6 +20,6 @@ def news(request):
         request,
         "news.html",
         {
-            "news_list" : news_list
+            "news_list": news_list
         }
     )

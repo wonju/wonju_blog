@@ -8,12 +8,14 @@ def disclaimer(request):
         {},
     )
 
+
 def terms(request):
     return render(
         request,
         "policy/terms.html",
         {},
     )
+
 
 def privacy(request):
     return render(
