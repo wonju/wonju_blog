@@ -1,4 +1,4 @@
-from .patials import *
+from .partials import *
 
 
 DEBUG = False
